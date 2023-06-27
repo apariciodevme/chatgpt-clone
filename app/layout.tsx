@@ -4,7 +4,8 @@ import { Inter } from "next/font/google";
 
 import { SessionProvider } from "@/components/SessionProvider";
 import { getServerSession } from "next-auth";
-import { authOptions } from "@/api/auth/[...nextAuth]";
+import { authOptions } from "@/pages/api/auth/[...nextauth]";
+import Login from "@/components/Login";
 
 
 const inter = Inter({ subsets: ["latin"] });
@@ -25,8 +26,10 @@ export default async function RootLayout({
     <html lang="en">
       <body className={inter.className}>
       <SessionProvider session={session}>
-      </SessionProvider>
-        <div className="flex">
+        {!session ? (
+          <Login/>
+        ) : (
+          <div className="flex">
           {/*Side Bar*/}
           <div className="bg-[#202123] max-w-xs h-screen overflow-y-auto md:min-w-[20rem]  ">
             <SideBar />
@@ -35,6 +38,9 @@ export default async function RootLayout({
 
           <div className="flex-1 bg-[#343541]">{children}</div>
         </div>
+        )}
+      </SessionProvider>
+       
       </body>
     </html>
   );

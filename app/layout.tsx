@@ -19,10 +19,12 @@ export default function RootLayout({
       <body className={inter.className}>
         <div className="flex">
           {/*Side Bar*/}
-          <SideBar />
+          <div className="bg-[#202123] max-w-xs h-screen overflow-y-auto md:min-w-[20rem]  ">
+            <SideBar />
+          </div>
           {/*Client Provider - Notifications*/}
 
-          <div className="flex-1 bg-slate-800">{children}</div>
+          <div className="flex-1 bg-[#343541]">{children}</div>
         </div>
       </body>
     </html>

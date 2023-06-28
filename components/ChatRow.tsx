@@ -31,11 +31,10 @@ const ChatRow = ({ id }: ScriptProps) => {
     setActive(pathname.includes(id));
   }, [pathname]);
 
-
-  const removeChat = async() => {
-    await deleteDoc(doc(db, 'users', session?.user?.email!, 'chats',id));
-    router.replace("/")
-  }
+  const removeChat = async () => {
+    await deleteDoc(doc(db, "users", session?.user?.email!, "chats", id));
+    router.replace("/");
+  };
 
   return (
     <Link
@@ -46,7 +45,10 @@ const ChatRow = ({ id }: ScriptProps) => {
       <p className="flex-1 hidden truncate md:inline-flex">
         {messages?.docs[messages?.docs.length - 1]?.data().text || "New chat"}
       </p>
-      <TrashIcon onClick={removeChat} className="w-5 h-5 text-gray-700 hover:text-red-500" />
+      <TrashIcon
+        onClick={removeChat}
+        className="w-5 h-5 text-gray-700 hover:text-red-500"
+      />
     </Link>
   );
 };

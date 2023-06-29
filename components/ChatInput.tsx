@@ -16,11 +16,7 @@ const ChatInput = ({ chatId }: Props) => {
 
 
   // use SWR to get model
-  const model = "text-davinci-model";
-
-
-
-
+  const model = "text-davinci-003";
 
 
 
@@ -61,7 +57,6 @@ const ChatInput = ({ chatId }: Props) => {
     const notification = toast.loading('ChatGPT is thinking...')
 
     
-    
     await fetch('/api/askQuestion', {
       method: 'POST',
       headers: {
@@ -74,7 +69,7 @@ const ChatInput = ({ chatId }: Props) => {
     }).then(
       () => {
         //toast notif to say succesfull
-        toast.success('ChatGPT response', {
+        toast.success('Successful ChatGPT response', {
           id: notification,
         })
       }
@@ -89,7 +84,7 @@ const ChatInput = ({ chatId }: Props) => {
           value={prompt}
           onChange={(e) => setPrompt(e.target.value)}
           type="text"
-          placeholder="type yout pwtompt here"
+          placeholder="type yout prompt here"
         />
 
         <button
